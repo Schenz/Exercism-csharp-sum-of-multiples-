@@ -1,10 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public static class SumOfMultiples
 {
     public static int Sum(IEnumerable<int> multiples, int max)
     {
-        throw new NotImplementedException("You need to implement this function.");
+        ISet<int> numbers = new HashSet<int>();
+
+        foreach (var multiple in multiples)
+        {
+            for (int i = multiple; i < max; i += multiple)
+            {
+                numbers.Add(i);
+            }
+        }
+
+        return numbers.Sum();
     }
 }
